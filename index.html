@@ -3,23 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Soka Records — next generation artist studio, incubator, and record label." />
+  <meta name="description" content="Soka Records — a next generation artist studio, incubator, and record label." />
   <title>Soka Records</title>
 
-  <!-- Mono-heavy, expensive-clean -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* expensive greys, no pure white */
-      --bg: #e9e7e3;          /* warm grey paper */
-      --bg2:#dfddd9;          /* deeper panel grey */
-      --ink:#0b0c0d;
-      --muted: rgba(11,12,13,0.62);
-      --hair: rgba(11,12,13,0.18);
-      --hair2: rgba(11,12,13,0.10);
+      --bg:#060607;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.04);
+      --ink: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.58);
+      --hair: rgba(255,255,255,0.14);
+      --hair2: rgba(255,255,255,0.08);
       --max: 1120px;
       --pad: 18px;
     }
@@ -29,88 +28,91 @@
     body{
       margin:0;
       background:
-        radial-gradient(1200px 700px at 20% 15%, rgba(255,255,255,0.25), transparent 55%),
-        radial-gradient(900px 600px at 75% 35%, rgba(255,255,255,0.18), transparent 58%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
+        radial-gradient(900px 600px at 30% 20%, rgba(255,255,255,0.05), transparent 60%),
+        radial-gradient(700px 500px at 78% 45%, rgba(255,255,255,0.035), transparent 62%),
+        var(--bg);
       color: var(--ink);
       font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       letter-spacing: 0.2px;
     }
 
-    /* subtle paper grain (not “cozy”, just tactile) */
+    /* subtle grain on black */
     body::before{
       content:"";
       position:fixed;
       inset:0;
       pointer-events:none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
-      mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+      mix-blend-mode:screen;
       opacity:.35;
     }
 
     a{ color:inherit; text-decoration:none; }
-    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
 
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 26px var(--pad) 70px;
+      padding: 22px var(--pad) 70px;
       position:relative;
+      min-height: 100vh;
+      display:flex;
+      flex-direction:column;
+      gap: 18px;
     }
 
-    /* FRONT DOOR */
     header{
       border: 1px solid var(--hair);
-      background: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.03);
       backdrop-filter: blur(6px);
     }
 
     .mast{
-      display:grid;
-      grid-template-columns: 1.25fr 0.75fr;
+      display:flex;
+      justify-content:space-between;
       gap: 16px;
-      padding: 16px 14px 14px;
+      padding: 14px 14px 12px;
       border-bottom: 1px solid var(--hair2);
+      align-items:flex-start;
+      flex-wrap:wrap;
     }
 
     .brand{
-      min-width:0;
+      min-width: 260px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
     }
 
     .brandTop{
       display:flex;
       align-items:baseline;
       gap: 12px;
-      flex-wrap:wrap;
+      flex-wrap: wrap;
     }
 
     .name{
       margin:0;
       font-weight: 500;
-      font-size: 14px;
-      letter-spacing: 0.22em;
+      font-size: 13px;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
     }
 
     .stamp{
-      font-size: 11px;
-      letter-spacing: 0.18em;
+      font-size: 10.5px;
+      letter-spacing: 0.20em;
       text-transform: uppercase;
-      color: rgba(11,12,13,0.56);
+      color: rgba(255,255,255,0.48);
       white-space: nowrap;
     }
 
     .statement{
-      margin: 12px 0 0;
-      font-size: 13px;
-      line-height: 1.85;
-      color: rgba(11,12,13,0.72);
-      max-width: 70ch;
-    }
-
-    .statement strong{
-      font-weight: 500;
-      color: rgba(11,12,13,0.88);
+      margin:0;
+      font-size: 12.8px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.72);
+      max-width: 76ch;
     }
 
     nav{
@@ -127,56 +129,93 @@
       border:none;
       background:none;
       cursor:pointer;
-      font-size: 11.5px;
-      letter-spacing: 0.18em;
+      font-size: 11px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(11,12,13,0.58);
+      color: rgba(255,255,255,0.52);
       position:relative;
     }
-
     .tab[aria-selected="true"]{
-      color: rgba(11,12,13,0.92);
+      color: rgba(255,255,255,0.92);
     }
-
     .tab[aria-selected="true"]::after{
       content:"";
       position:absolute;
       left:0; right:0;
-      bottom:-8px;
+      bottom:-9px;
       height:1px;
-      background: rgba(11,12,13,0.75);
+      background: rgba(255,255,255,0.72);
     }
 
-    /* placard meta strip */
     .meta{
       display:grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 10px;
       padding: 10px 14px;
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
+      font-size: 10px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(11,12,13,0.52);
+      color: rgba(255,255,255,0.44);
+    }
+    .meta .v{
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 0.18em;
     }
     .meta > div{
       white-space: nowrap;
       overflow:hidden;
       text-overflow: ellipsis;
     }
-    .meta .v{
-      color: rgba(11,12,13,0.78);
-      letter-spacing: 0.14em;
-    }
 
-    main{ margin-top: 18px; }
+    main{
+      flex: 1;
+      display:flex;
+      flex-direction:column;
+    }
 
     .panel{ display:none; }
     .panel.active{ display:block; }
 
-    /* ARTISTS (index list, no “cards”) */
+    /* HOME: centered image as the "front door" */
+    .home{
+      flex: 1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 24px 0 10px;
+    }
+
+    .centerFrame{
+      width: min(980px, 96vw);
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.02);
+      padding: 16px;
+    }
+
+    .centerImage{
+      display:block;
+      width:100%;
+      height:auto;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .homeNote{
+      margin-top: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.44);
+    }
+
+    /* ARTISTS: list (still stark) */
     .artists{
       border: 1px solid var(--hair);
-      background: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
       padding: 10px 0;
     }
 
@@ -191,26 +230,26 @@
     .row:first-child{ border-top:none; }
 
     .code{
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
+      font-size: 10px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(11,12,13,0.55);
+      color: rgba(255,255,255,0.46);
     }
     .rName{
-      font-size: 12.5px;
-      letter-spacing: 0.12em;
+      font-size: 12px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(11,12,13,0.88);
+      color: rgba(255,255,255,0.90);
     }
     .rMeta{
-      font-size: 11.5px;
-      letter-spacing: 0.10em;
+      font-size: 11px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(11,12,13,0.58);
+      color: rgba(255,255,255,0.52);
       text-align:right;
     }
 
-    /* ABOUT (museum placard blocks) */
+    /* ABOUT: museum placard blocks */
     .about{
       display:grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -219,46 +258,33 @@
 
     .block{
       border: 1px solid var(--hair);
-      background: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
       padding: 14px;
     }
     .block h3{
       margin:0 0 10px;
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
+      font-size: 10px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(11,12,13,0.72);
+      color: rgba(255,255,255,0.78);
       font-weight: 500;
     }
     .block p, .block li{
       margin:0;
-      font-size: 12.8px;
-      line-height: 1.9;
-      color: rgba(11,12,13,0.68);
+      font-size: 12.6px;
+      line-height: 2.0;
+      color: rgba(255,255,255,0.64);
     }
     .block p + p{ margin-top: 12px; }
     ul{ margin: 10px 0 0; padding-left: 18px; }
     li{ margin: 8px 0; }
 
-    footer{
-      margin-top: 16px;
-      padding-top: 10px;
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(11,12,13,0.52);
-      display:flex;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap:wrap;
-    }
-
-    /* FULLSCREEN OVERLAY (artists) */
+    /* FULLSCREEN OVERLAY for artists */
     .overlay{
       position:fixed;
       inset:0;
       display:none;
-      background: rgba(15,16,18,0.88); /* stark */
+      background: rgba(0,0,0,0.94);
       color: rgba(255,255,255,0.92);
       z-index: 50;
     }
@@ -267,10 +293,8 @@
     .overlayFrame{
       position:absolute;
       inset: 18px;
-      border: 1px solid rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.06);
-      display:grid;
-      grid-template-columns: 1fr;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.03);
       padding: 14px;
     }
 
@@ -280,25 +304,26 @@
       align-items:flex-start;
       gap: 14px;
       padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.14);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
     }
 
     .ovTitle{
       margin:0;
-      font-size: 12px;
-      letter-spacing: 0.18em;
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       font-weight: 500;
       color: rgba(255,255,255,0.92);
+      line-height: 1.7;
     }
 
     .closeBtn{
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.9);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.88);
       font-family: inherit;
-      font-size: 11px;
-      letter-spacing: 0.18em;
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       padding: 10px 10px;
       cursor:pointer;
@@ -313,32 +338,32 @@
     }
 
     .placard .left{
-      border-right: 1px solid rgba(255,255,255,0.12);
+      border-right: 1px solid rgba(255,255,255,0.10);
       padding-right: 14px;
     }
 
     .pName{
       margin:0;
-      font-size: 16px;
-      letter-spacing: 0.14em;
+      font-size: 13px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
     .pLine{
       margin-top: 10px;
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
+      font-size: 10px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.60);
-      line-height: 1.6;
+      color: rgba(255,255,255,0.54);
+      line-height: 1.7;
     }
 
     .pText{
       margin:0;
-      font-size: 13px;
-      line-height: 2.0;
-      color: rgba(255,255,255,0.78);
-      max-width: 78ch;
+      font-size: 12.8px;
+      line-height: 2.05;
+      color: rgba(255,255,255,0.70);
+      max-width: 82ch;
     }
 
     .pLinks{
@@ -346,22 +371,33 @@
       display:flex;
       gap: 16px;
       flex-wrap:wrap;
-      font-size: 11.5px;
-      letter-spacing: 0.10em;
+      font-size: 10.8px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.80);
     }
 
+    footer{
+      margin-top: 18px;
+      padding-top: 10px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.42);
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+
     /* Responsive */
     @media (max-width: 980px){
-      .mast{ grid-template-columns: 1fr; }
-      nav{ justify-content:flex-start; }
       .meta{ grid-template-columns: 1fr; }
       .row{ grid-template-columns: 92px 1fr; }
       .rMeta{ text-align:left; grid-column: 2; }
       .about{ grid-template-columns: 1fr; }
       .placard{ grid-template-columns: 1fr; }
-      .placard .left{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.12); padding-right:0; padding-bottom:12px; }
+      .placard .left{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.10); padding-right:0; padding-bottom:12px; }
     }
   </style>
 </head>
@@ -377,13 +413,14 @@
           </div>
 
           <p class="statement">
-            <strong>A next generation artist studio, incubator, and record label.</strong><br/>
+            <span style="color:rgba(255,255,255,0.86);">A next generation artist studio, incubator, and record label.</span><br/>
             Operates like a studio: selective output, high standards, quiet execution. Catalog-first thinking.
           </p>
         </div>
 
         <nav aria-label="Primary">
-          <button class="tab" role="tab" aria-selected="true" aria-controls="panel-artists" id="tab-artists" data-tab="artists">Artists</button>
+          <button class="tab" role="tab" aria-selected="true" aria-controls="panel-home" id="tab-home" data-tab="home">Home</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="panel-artists" id="tab-artists" data-tab="artists">Artists</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="panel-about" id="tab-about" data-tab="about">About</button>
         </nav>
       </div>
@@ -396,10 +433,24 @@
     </header>
 
     <main>
+      <!-- HOME -->
+      <section class="panel active" role="tabpanel" id="panel-home" aria-labelledby="tab-home">
+        <div class="home">
+          <div class="centerFrame" aria-label="Center image">
+            <!-- IMPORTANT: upload your screenshot to the repo as center.png (or change this filename) -->
+            <img class="centerImage" src="center.png" alt="Soka Records — front door / archive" />
+            <div class="homeNote">
+              <div>ENTRY POINT</div>
+              <div>SELECTIVE OUTPUT / HIGH STANDARDS</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ARTISTS -->
-      <section class="panel active" role="tabpanel" id="panel-artists" aria-labelledby="tab-artists">
+      <section class="panel" role="tabpanel" id="panel-artists" aria-labelledby="tab-artists">
         <div class="artists" aria-label="Artist index">
-          <!-- Replace these rows with real artists -->
+          <!-- Replace these rows -->
           <div class="row"
                data-code="A-001"
                data-name="Artist Name"
@@ -441,11 +492,8 @@
           <div class="block">
             <h3>Statement</h3>
             <p>
-              Soka Records is built for repeatable quality. A small system that makes strong projects inevitable:
-              taste as filter, execution as multiplier, alignment as default.
-            </p>
-            <p>
-              We prefer fewer releases with higher conviction. We optimize for catalog that holds value over time.
+              Soka Records is built for repeatable quality. Taste as filter, execution as multiplier.
+              We prefer fewer releases with higher conviction and optimize for durable catalog value.
             </p>
           </div>
 
@@ -493,7 +541,7 @@
       <div class="overlayTop">
         <div>
           <div class="ovTitle" id="ovCode">A-000</div>
-          <div class="ovTitle" style="opacity:.65; margin-top:6px;" id="ovMeta">—</div>
+          <div class="ovTitle" style="opacity:.62; margin-top:6px;" id="ovMeta">—</div>
         </div>
         <button class="closeBtn" id="closeBtn">Close</button>
       </div>
@@ -514,9 +562,10 @@
   </div>
 
   <script>
-    // Tabs (no motion)
+    // Tabs
     const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
     const panels = {
+      home: document.getElementById('panel-home'),
       artists: document.getElementById('panel-artists'),
       about: document.getElementById('panel-about'),
     };
@@ -561,7 +610,6 @@
       const yr = new Date().getFullYear();
       ovYearLine.innerHTML = 'YEAR <span style="opacity:.75;">' + yr + '</span>';
 
-      // links
       ovLinks.innerHTML = '';
       let links = [];
       try { links = JSON.parse(linksRaw); } catch(e) { links = []; }
@@ -587,15 +635,9 @@
     }
 
     closeBtn.addEventListener('click', closeOverlay);
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeOverlay();
-    });
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeOverlay(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('show')) closeOverlay(); });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay.classList.contains('show')) closeOverlay();
-    });
-
-    // bind rows
     document.querySelectorAll('.row').forEach(row => {
       row.setAttribute('tabindex', '0');
       row.setAttribute('role', 'button');
@@ -605,7 +647,6 @@
       });
     });
 
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
