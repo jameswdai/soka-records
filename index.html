@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Soka Records — artist studio, incubator, record label." />
+  <title>Soka Records</title>
+
+  <!-- Modern, minimal, artsy font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0b0c0f;
+      --panel: rgba(255,255,255,0.04);
+      --panel-2: rgba(255,255,255,0.06);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.62);
+      --hair: rgba(255,255,255,0.12);
+      --accent: rgba(255,255,255,0.9);
+      --glow: rgba(255,255,255,0.08);
+      --radius: 18px;
+      --max: 1040px;
+      --pad: 22px;
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(900px 500px at 15% 20%, rgba(255,255,255,0.08), transparent 55%),
+                  radial-gradient(900px 500px at 85% 30%, rgba(255,255,255,0.06), transparent 60%),
+                  radial-gradient(900px 500px at 50% 85%, rgba(255,255,255,0.05), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      letter-spacing: 0.2px;
+    }
+
+    a{ color: var(--text); text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 18px 70px;
+    }
+
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 18px;
+      padding: 18px;
+      border: 1px solid var(--hair);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      min-width: 240px;
+    }
+
+    .brand .mark{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
+
+    .logo{
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid var(--hair);
+      background:
+        radial-gradient(10px 10px at 25% 30%, rgba(255,255,255,0.35), transparent 65%),
+        radial-gradient(16px 16px at 70% 65%, rgba(255,255,255,0.22), transparent 70%),
+        rgba(255,255,255,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    h1{
+      margin:0;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .tagline{
+      margin:0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 520px;
+    }
+
+    nav{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tab{
+      position:relative;
+      border: 1px solid var(--hair);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      cursor: pointer;
+      user-select: none;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .tab:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.05); }
+    .tab[aria-selected="true"]{
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.07);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
+    }
+
+    main{
+      margin-top: 20px;
+      border: 1px solid var(--hair);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.02);
+      overflow:hidden;
+    }
+
+    .hero{
+      padding: 34px 22px 22px;
+      border-bottom: 1px solid var(--hair);
+      background:
+        radial-gradient(520px 260px at 10% 30%, rgba(255,255,255,0.06), transparent 60%),
+        radial-gradient(520px 260px at 80% 10%, rgba(255,255,255,0.05), transparent 60%),
+        rgba(255,255,255,0.02);
+    }
+
+    .hero h2{
+      margin:0 0 10px;
+      font-size: 34px;
+      line-height: 1.05;
+      font-weight: 600;
+      letter-spacing: -0.8px;
+    }
+    .hero p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.6;
+      max-width: 720px;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      align-items:center;
+    }
+
+    .btn{
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.26); }
+    .btn.primary{
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .panels{
+      padding: 22px;
+    }
+
+    .panel{
+      display:none;
+      animation: fadeIn .18s ease;
+    }
+    .panel.active{ display:block; }
+
+    @keyframes fadeIn{
+      from{ opacity: 0; transform: translateY(2px); }
+      to{ opacity: 1; transform: translateY(0); }
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .card{
+      grid-column: span 4;
+      border: 1px solid var(--hair);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 16px;
+      min-height: 120px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
+    }
+
+    .card h3{
+      margin:0 0 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .card p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .pillRow{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .pill{
+      font-size: 11.5px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+
+    .aboutCols{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 14px;
+    }
+
+    .box{
+      border: 1px solid var(--hair);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      padding: 16px;
+    }
+
+    .box h3{
+      margin:0 0 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .box p, .box li{
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+
+    ul{ margin: 10px 0 0; padding-left: 18px; }
+
+    footer{
+      margin-top: 18px;
+      padding: 0 6px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color: rgba(255,255,255,0.42);
+      font-size: 12px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .fineLinks{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .card{ grid-column: span 6; }
+      .aboutCols{ grid-template-columns: 1fr; }
+      .hero h2{ font-size: 30px; }
+      header{ flex-direction: column; align-items: stretch; }
+      nav{ justify-content: flex-start; }
+    }
+    @media (max-width: 560px){
+      .card{ grid-column: span 12; }
+      .hero{ padding: 28px 18px 18px; }
+      .panels{ padding: 18px; }
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .panel{ animation: none; }
+      .tab, .btn{ transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="mark">
+          <div class="logo" aria-hidden="true"></div>
+          <h1>Soka Records</h1>
+        </div>
+        <p class="tagline">
+          A modern artist studio + incubator. We build lasting careers with obsessive taste, disciplined execution, and long-term catalog thinking.
+        </p>
+      </div>
+
+      <nav aria-label="Primary">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="panel-artists" id="tab-artists" data-tab="artists">Artists</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="panel-about" id="tab-about" data-tab="about">About</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <h2 id="hero-title">Soka is built for the work.</h2>
+        <p>
+          Minimal bureaucracy. Maximum output. We partner early, move fast, and stay long.
+          If you’re an artist with something real, send one link and one sentence.
+        </p>
+        <div class="ctaRow">
+          <!-- Replace these with real links -->
+          <a class="btn primary" href="mailto:demo@sokarecords.com?subject=Demo%20Submission%20—%20Soka%20Records&body=One%20link%3A%0AOne%20sentence%3A%0A" aria-label="Submit a demo via email">Submit demo</a>
+          <a class="btn" href="mailto:hello@sokarecords.com" aria-label="Email Soka Records">Contact</a>
+          <a class="btn" href="#" aria-label="Instagram link (replace #)">Instagram</a>
+        </div>
+      </section>
+
+      <section class="panels">
+        <!-- ARTISTS -->
+        <div class="panel active" role="tabpanel" id="panel-artists" aria-labelledby="tab-artists">
+          <div class="grid" aria-label="Artist roster">
+            <!-- Replace cards with real artists -->
+            <article class="card">
+              <h3>Artist Name</h3>
+              <p>One-line identity. Genre/scene. What makes them inevitable.</p>
+              <div class="pillRow">
+                <span class="pill">Alt</span><span class="pill">R&amp;B</span><span class="pill">LA</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <h3>Artist Name</h3>
+              <p>One-line identity. A concrete, memorable positioning sentence.</p>
+              <div class="pillRow">
+                <span class="pill">Pop</span><span class="pill">Indie</span><span class="pill">Tokyo</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <h3>Artist Name</h3>
+              <p>One-line identity. If you can’t say it in one line, you don’t have it.</p>
+              <div class="pillRow">
+                <span class="pill">Hip-Hop</span><span class="pill">Underground</span><span class="pill">NYC</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ABOUT -->
+        <div class="panel" role="tabpanel" id="panel-about" aria-labelledby="tab-about">
+          <div class="aboutCols">
+            <div class="box">
+              <h3>What we do</h3>
+              <p>
+                Soka Records is an artist studio. We develop projects from the inside: creative direction, releases, media, and growth systems.
+                We avoid noise, chase signal, and build durable catalog value.
+              </p>
+              <p>
+                We’re not a “spray and pray” label. Fewer bets. Deeper conviction.
+              </p>
+            </div>
+
+            <div class="box">
+              <h3>Principles</h3>
+              <ul>
+                <li><strong>Obsessive taste.</strong> Quality compounds.</li>
+                <li><strong>Speed with standards.</strong> Ship often. Refine relentlessly.</li>
+                <li><strong>Long-term alignment.</strong> Incentives matter more than hype.</li>
+                <li><strong>Minimal surface area.</strong> Fewer meetings. More work.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid" style="margin-top:14px;">
+            <div class="card" style="grid-column: span 6;">
+              <h3>For artists</h3>
+              <p>
+                If you want a partner that can execute at a high level without turning your art into a committee,
+                you’re in the right place. Send one link and one sentence.
+              </p>
+            </div>
+            <div class="card" style="grid-column: span 6;">
+              <h3>For collaborators</h3>
+              <p>
+                Producers, visual directors, editors, marketers: if you’re elite and reliable, reach out with a portfolio and availability.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Soka Records</div>
+      <div class="fineLinks">
+        <!-- Replace # with real links -->
+        <a href="#" aria-label="Instagram link (replace #)">Instagram</a>
+        <a href="#" aria-label="YouTube link (replace #)">YouTube</a>
+        <a href="mailto:hello@sokarecords.com" aria-label="Email Soka Records">hello@sokarecords.com</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Tabs
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const panels = {
+      artists: document.getElementById('panel-artists'),
+      about: document.getElementById('panel-about'),
+    };
+
+    function setTab(name){
+      tabs.forEach(t => {
+        const selected = t.dataset.tab === name;
+        t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      });
+      Object.entries(panels).forEach(([k, el]) => {
+        el.classList.toggle('active', k === name);
+      });
+
+      // Update URL hash (optional)
+      history.replaceState(null, '', `#${name}`);
+    }
+
+    tabs.forEach(t => t.addEventListener('click', () => setTab(t.dataset.tab)));
+
+    // Load from hash if present
+    const hash = (location.hash || '').replace('#','').trim();
+    if (hash && panels[hash]) setTab(hash);
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
