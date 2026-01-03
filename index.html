@@ -3,319 +3,294 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Soka Records — artist studio, incubator, record label." />
+  <meta name="description" content="Soka Records — artist studio + label." />
   <title>Soka Records</title>
 
-  <!-- Modern, minimal, artsy font -->
+  <!-- Editorial + minimal -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #0b0c0f;
-      --panel: rgba(255,255,255,0.04);
-      --panel-2: rgba(255,255,255,0.06);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.62);
-      --hair: rgba(255,255,255,0.12);
-      --accent: rgba(255,255,255,0.9);
-      --glow: rgba(255,255,255,0.08);
-      --radius: 18px;
+      --bg: #f6f3ee;
+      --ink: #111111;
+      --muted: rgba(17,17,17,0.62);
+      --hair: rgba(17,17,17,0.16);
+      --hair2: rgba(17,17,17,0.10);
+      --paper: rgba(255,255,255,0.55);
       --max: 1040px;
-      --pad: 22px;
     }
 
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
-      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(900px 500px at 15% 20%, rgba(255,255,255,0.08), transparent 55%),
-                  radial-gradient(900px 500px at 85% 30%, rgba(255,255,255,0.06), transparent 60%),
-                  radial-gradient(900px 500px at 50% 85%, rgba(255,255,255,0.05), transparent 60%),
-                  var(--bg);
-      color: var(--text);
-      letter-spacing: 0.2px;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      letter-spacing: 0.1px;
     }
 
-    a{ color: var(--text); text-decoration: none; }
+    /* Subtle grain (art print feel) */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
+      mix-blend-mode:multiply;
+      opacity:.45;
+    }
+
+    a{ color:inherit; text-decoration:none; }
     a:hover{ text-decoration: underline; text-underline-offset: 3px; }
 
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 40px 18px 70px;
+      padding: 44px 18px 84px;
+      position:relative;
     }
 
     header{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      gap: 18px;
-      padding: 18px;
-      border: 1px solid var(--hair);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
+      gap: 20px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--hair);
     }
 
     .brand{
+      min-width: 240px;
       display:flex;
       flex-direction:column;
       gap: 10px;
-      min-width: 240px;
     }
 
-    .brand .mark{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-    }
-
-    .logo{
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      border: 1px solid var(--hair);
-      background:
-        radial-gradient(10px 10px at 25% 30%, rgba(255,255,255,0.35), transparent 65%),
-        radial-gradient(16px 16px at 70% 65%, rgba(255,255,255,0.22), transparent 70%),
-        rgba(255,255,255,0.04);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-
-    h1{
+    .brand h1{
       margin:0;
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
+      font-family: "EB Garamond", Georgia, serif;
+      font-weight: 500;
+      font-size: 28px;
+      letter-spacing: 0.2px;
     }
 
-    .tagline{
+    .brand .sub{
       margin:0;
-      font-size: 13px;
       color: var(--muted);
-      line-height: 1.5;
-      max-width: 520px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      max-width: 560px;
     }
 
     nav{
       display:flex;
-      gap: 10px;
+      gap: 18px;
       align-items:center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      margin-top: 6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
     .tab{
-      position:relative;
-      border: 1px solid var(--hair);
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
+      padding: 0;
+      border: none;
+      background: none;
       cursor: pointer;
-      user-select: none;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      position:relative;
     }
-    .tab:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.05); }
     .tab[aria-selected="true"]{
-      border-color: rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.07);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
+      color: var(--ink);
+    }
+    .tab[aria-selected="true"]::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-8px;
+      height:1px;
+      background: var(--ink);
+      opacity: .65;
     }
 
-    main{
-      margin-top: 20px;
-      border: 1px solid var(--hair);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,0.02);
-      overflow:hidden;
-    }
+    main{ margin-top: 26px; }
 
     .hero{
-      padding: 34px 22px 22px;
-      border-bottom: 1px solid var(--hair);
-      background:
-        radial-gradient(520px 260px at 10% 30%, rgba(255,255,255,0.06), transparent 60%),
-        radial-gradient(520px 260px at 80% 10%, rgba(255,255,255,0.05), transparent 60%),
-        rgba(255,255,255,0.02);
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      padding: 26px 0 30px;
+      border-bottom: 1px solid var(--hair2);
     }
 
     .hero h2{
       margin:0 0 10px;
-      font-size: 34px;
+      font-family: "EB Garamond", Georgia, serif;
+      font-weight: 500;
+      font-size: 44px;
       line-height: 1.05;
-      font-weight: 600;
-      letter-spacing: -0.8px;
     }
+
     .hero p{
       margin:0;
       color: var(--muted);
       font-size: 14.5px;
-      line-height: 1.6;
-      max-width: 720px;
+      line-height: 1.8;
+      max-width: 44rem;
     }
 
-    .ctaRow{
+    .heroAside{
+      border-left: 1px solid var(--hair2);
+      padding-left: 22px;
       display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-      align-items:center;
-    }
-
-    .btn{
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.06);
-      color: var(--text);
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 13px;
-      letter-spacing: 0.4px;
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.26); }
-    .btn.primary{
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(255,255,255,0.28);
-    }
-
-    .panels{
-      padding: 22px;
-    }
-
-    .panel{
-      display:none;
-      animation: fadeIn .18s ease;
-    }
-    .panel.active{ display:block; }
-
-    @keyframes fadeIn{
-      from{ opacity: 0; transform: translateY(2px); }
-      to{ opacity: 1; transform: translateY(0); }
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
+      flex-direction:column;
       gap: 14px;
     }
 
-    .card{
-      grid-column: span 4;
-      border: 1px solid var(--hair);
-      border-radius: 16px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      padding: 16px;
-      min-height: 120px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
+    .meta{
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(17,17,17,0.72);
     }
 
-    .card h3{
-      margin:0 0 8px;
+    .links{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
       font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.4px;
+    }
+
+    .links a{
+      display:inline-flex;
+      gap: 10px;
+      align-items:baseline;
+    }
+
+    .links .hint{
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .card p{
+    .panel{ display:none; padding-top: 28px; }
+    .panel.active{ display:block; animation: fade .18s ease; }
+
+    @keyframes fade{
+      from{ opacity:0; transform: translateY(2px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    /* Artists layout: less “cards”, more gallery list */
+    .artists{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .artist{
+      padding: 18px 0;
+      border-top: 1px solid var(--hair2);
+      display:grid;
+      grid-template-columns: 220px 1fr;
+      gap: 20px;
+      align-items:start;
+    }
+    .artist:first-child{ border-top: 1px solid var(--hair); }
+
+    .artistName{
+      font-family: "EB Garamond", Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      margin:0;
+      line-height: 1.2;
+    }
+
+    .artistMeta{
+      margin-top: 8px;
+      color: rgba(17,17,17,0.55);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .artistDesc{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.85;
+      max-width: 52rem;
+    }
+
+    .artistLinks{
+      margin-top: 10px;
+      display:flex;
+      gap: 14px;
+      flex-wrap:wrap;
+      color: rgba(17,17,17,0.78);
+      font-size: 13.5px;
+    }
+
+    /* About layout */
+    .about{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items:start;
+    }
+
+    .block{
+      padding: 18px 18px;
+      background: var(--paper);
+      border: 1px solid var(--hair2);
+    }
+    .block h3{
+      margin:0 0 10px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .block p, .block li{
       margin:0;
       color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.55;
+      font-size: 14.5px;
+      line-height: 1.85;
     }
-
-    .pillRow{
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-    .pill{
-      font-size: 11.5px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
-      color: rgba(255,255,255,0.75);
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-    }
-
-    .aboutCols{
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 14px;
-    }
-
-    .box{
-      border: 1px solid var(--hair);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.03);
-      padding: 16px;
-    }
-
-    .box h3{
-      margin:0 0 8px;
-      font-size: 14px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-    }
-
-    .box p, .box li{
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.65;
-    }
-
-    ul{ margin: 10px 0 0; padding-left: 18px; }
+    .block p + p{ margin-top: 12px; }
+    .block ul{ margin: 12px 0 0; padding-left: 18px; }
+    .block li{ margin: 8px 0; }
 
     footer{
-      margin-top: 18px;
-      padding: 0 6px;
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--hair2);
+      color: rgba(17,17,17,0.55);
+      font-size: 12.5px;
       display:flex;
       justify-content:space-between;
-      align-items:center;
-      color: rgba(255,255,255,0.42);
-      font-size: 12px;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .fineLinks{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 14px;
+      flex-wrap:wrap;
+      position:relative;
     }
 
     /* Responsive */
-    @media (max-width: 900px){
-      .card{ grid-column: span 6; }
-      .aboutCols{ grid-template-columns: 1fr; }
-      .hero h2{ font-size: 30px; }
-      header{ flex-direction: column; align-items: stretch; }
-      nav{ justify-content: flex-start; }
-    }
-    @media (max-width: 560px){
-      .card{ grid-column: span 12; }
-      .hero{ padding: 28px 18px 18px; }
-      .panels{ padding: 18px; }
+    @media (max-width: 920px){
+      .hero{ grid-template-columns: 1fr; }
+      .heroAside{ border-left:none; padding-left:0; border-top:1px solid var(--hair2); padding-top:18px; }
+      .about{ grid-template-columns: 1fr; }
+      .artist{ grid-template-columns: 1fr; }
     }
 
-    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
-      .panel{ animation: none; }
-      .tab, .btn{ transition:none; }
+      .panel.active{ animation:none; }
     }
   </style>
 </head>
@@ -324,12 +299,9 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="mark">
-          <div class="logo" aria-hidden="true"></div>
-          <h1>Soka Records</h1>
-        </div>
-        <p class="tagline">
-          A modern artist studio + incubator. We build lasting careers with obsessive taste, disciplined execution, and long-term catalog thinking.
+        <h1>Soka Records</h1>
+        <p class="sub">
+          An artist studio + label. We develop projects from the inside—taste first, craft always, long-term alignment.
         </p>
       </div>
 
@@ -341,107 +313,143 @@
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
-        <h2 id="hero-title">Soka is built for the work.</h2>
-        <p>
-          Minimal bureaucracy. Maximum output. We partner early, move fast, and stay long.
-          If you’re an artist with something real, send one link and one sentence.
-        </p>
-        <div class="ctaRow">
-          <!-- Replace these with real links -->
-          <a class="btn primary" href="mailto:demo@sokarecords.com?subject=Demo%20Submission%20—%20Soka%20Records&body=One%20link%3A%0AOne%20sentence%3A%0A" aria-label="Submit a demo via email">Submit demo</a>
-          <a class="btn" href="mailto:hello@sokarecords.com" aria-label="Email Soka Records">Contact</a>
-          <a class="btn" href="#" aria-label="Instagram link (replace #)">Instagram</a>
+        <div>
+          <h2 id="hero-title">Built like a studio.</h2>
+          <p>
+            We keep it quiet and do the work. Fewer releases, higher conviction.
+            If you’re an artist with something real, send one link and one sentence.
+          </p>
         </div>
+
+        <aside class="heroAside">
+          <div class="meta">Contact</div>
+          <div class="links">
+            <a href="mailto:demo@sokarecords.com?subject=Demo%20—%20Soka%20Records&body=One%20link%3A%0AOne%20sentence%3A%0A">
+              Submit demo <span class="hint">email</span>
+            </a>
+            <a href="mailto:hello@sokarecords.com">
+              hello@sokarecords.com <span class="hint">email</span>
+            </a>
+            <a href="#">
+              Instagram <span class="hint">link</span>
+            </a>
+          </div>
+          <div class="meta" style="margin-top:10px;">Location</div>
+          <div style="color:var(--muted); font-size:14.5px; line-height:1.6;">Los Angeles / Global</div>
+        </aside>
       </section>
 
-      <section class="panels">
+      <section>
         <!-- ARTISTS -->
         <div class="panel active" role="tabpanel" id="panel-artists" aria-labelledby="tab-artists">
-          <div class="grid" aria-label="Artist roster">
-            <!-- Replace cards with real artists -->
-            <article class="card">
-              <h3>Artist Name</h3>
-              <p>One-line identity. Genre/scene. What makes them inevitable.</p>
-              <div class="pillRow">
-                <span class="pill">Alt</span><span class="pill">R&amp;B</span><span class="pill">LA</span>
+          <div class="artists">
+            <!-- Replace these blocks with real artists -->
+            <div class="artist">
+              <div>
+                <p class="artistName">Artist Name</p>
+                <div class="artistMeta">Alt / R&amp;B · Los Angeles</div>
               </div>
-            </article>
+              <div>
+                <p class="artistDesc">
+                  One clean sentence that sounds like a gallery caption—specific, confident, no buzzwords.
+                  What do they do better than anyone else?
+                </p>
+                <div class="artistLinks">
+                  <a href="#">Listen</a>
+                  <a href="#">IG</a>
+                  <a href="#">Press</a>
+                </div>
+              </div>
+            </div>
 
-            <article class="card">
-              <h3>Artist Name</h3>
-              <p>One-line identity. A concrete, memorable positioning sentence.</p>
-              <div class="pillRow">
-                <span class="pill">Pop</span><span class="pill">Indie</span><span class="pill">Tokyo</span>
+            <div class="artist">
+              <div>
+                <p class="artistName">Artist Name</p>
+                <div class="artistMeta">Pop / Indie · Tokyo</div>
               </div>
-            </article>
+              <div>
+                <p class="artistDesc">
+                  One sentence. Concrete imagery. If it reads like a pitch deck, it’s wrong.
+                </p>
+                <div class="artistLinks">
+                  <a href="#">Listen</a>
+                  <a href="#">IG</a>
+                </div>
+              </div>
+            </div>
 
-            <article class="card">
-              <h3>Artist Name</h3>
-              <p>One-line identity. If you can’t say it in one line, you don’t have it.</p>
-              <div class="pillRow">
-                <span class="pill">Hip-Hop</span><span class="pill">Underground</span><span class="pill">NYC</span>
+            <div class="artist">
+              <div>
+                <p class="artistName">Artist Name</p>
+                <div class="artistMeta">Hip-Hop · New York</div>
               </div>
-            </article>
+              <div>
+                <p class="artistDesc">
+                  Minimal description. Let the work carry it. A studio doesn’t explain itself too much.
+                </p>
+                <div class="artistLinks">
+                  <a href="#">Listen</a>
+                  <a href="#">IG</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- ABOUT -->
         <div class="panel" role="tabpanel" id="panel-about" aria-labelledby="tab-about">
-          <div class="aboutCols">
-            <div class="box">
-              <h3>What we do</h3>
+          <div class="about">
+            <div class="block">
+              <h3>What Soka is</h3>
               <p>
-                Soka Records is an artist studio. We develop projects from the inside: creative direction, releases, media, and growth systems.
-                We avoid noise, chase signal, and build durable catalog value.
+                Soka Records is an artist studio: creative direction, releases, and growth systems—built with restraint.
+                We’re selective because focus is the edge.
               </p>
               <p>
-                We’re not a “spray and pray” label. Fewer bets. Deeper conviction.
+                We work early, stay long, and optimize for catalog that still matters years later.
               </p>
             </div>
 
-            <div class="box">
-              <h3>Principles</h3>
+            <div class="block">
+              <h3>How we work</h3>
               <ul>
-                <li><strong>Obsessive taste.</strong> Quality compounds.</li>
-                <li><strong>Speed with standards.</strong> Ship often. Refine relentlessly.</li>
-                <li><strong>Long-term alignment.</strong> Incentives matter more than hype.</li>
-                <li><strong>Minimal surface area.</strong> Fewer meetings. More work.</li>
+                <li>Taste is the filter. Execution is the multiplier.</li>
+                <li>Small team, high standards, fast feedback loops.</li>
+                <li>Fewer meetings. More output.</li>
+                <li>Alignment beats hype.</li>
               </ul>
             </div>
-          </div>
 
-          <div class="grid" style="margin-top:14px;">
-            <div class="card" style="grid-column: span 6;">
+            <div class="block">
               <h3>For artists</h3>
               <p>
-                If you want a partner that can execute at a high level without turning your art into a committee,
-                you’re in the right place. Send one link and one sentence.
+                Email one link + one sentence. If it hits, we’ll respond. If not, we won’t waste your time.
               </p>
             </div>
-            <div class="card" style="grid-column: span 6;">
+
+            <div class="block">
               <h3>For collaborators</h3>
               <p>
-                Producers, visual directors, editors, marketers: if you’re elite and reliable, reach out with a portfolio and availability.
+                Producers, visual directors, editors, marketers: send a portfolio + availability.
+                Reliability is a creative advantage.
               </p>
             </div>
           </div>
         </div>
       </section>
-    </main>
 
-    <footer>
-      <div>© <span id="year"></span> Soka Records</div>
-      <div class="fineLinks">
-        <!-- Replace # with real links -->
-        <a href="#" aria-label="Instagram link (replace #)">Instagram</a>
-        <a href="#" aria-label="YouTube link (replace #)">YouTube</a>
-        <a href="mailto:hello@sokarecords.com" aria-label="Email Soka Records">hello@sokarecords.com</a>
-      </div>
-    </footer>
+      <footer>
+        <div>© <span id="year"></span> Soka Records</div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="#">Instagram</a>
+          <a href="#">YouTube</a>
+          <a href="mailto:hello@sokarecords.com">Email</a>
+        </div>
+      </footer>
+    </main>
   </div>
 
   <script>
-    // Tabs
     const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
     const panels = {
       artists: document.getElementById('panel-artists'),
@@ -449,25 +457,16 @@
     };
 
     function setTab(name){
-      tabs.forEach(t => {
-        const selected = t.dataset.tab === name;
-        t.setAttribute('aria-selected', selected ? 'true' : 'false');
-      });
-      Object.entries(panels).forEach(([k, el]) => {
-        el.classList.toggle('active', k === name);
-      });
-
-      // Update URL hash (optional)
+      tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.tab === name ? 'true' : 'false'));
+      Object.entries(panels).forEach(([k, el]) => el.classList.toggle('active', k === name));
       history.replaceState(null, '', `#${name}`);
     }
 
     tabs.forEach(t => t.addEventListener('click', () => setTab(t.dataset.tab)));
 
-    // Load from hash if present
     const hash = (location.hash || '').replace('#','').trim();
     if (hash && panels[hash]) setTab(hash);
 
-    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
