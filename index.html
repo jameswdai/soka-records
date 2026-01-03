@@ -3,47 +3,49 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Soka Records — index / archive." />
+  <meta name="description" content="Soka Records — next generation artist studio, incubator, and record label." />
   <title>Soka Records</title>
 
-  <!-- Archive + gallery: mono + editorial serif -->
+  <!-- Mono-heavy, expensive-clean -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #f7f7f5;       /* gallery white */
-      --ink: #0e0f10;
-      --muted: rgba(14,15,16,0.62);
-      --hair: rgba(14,15,16,0.16);
-      --hair2: rgba(14,15,16,0.10);
-      --paper: rgba(255,255,255,0.58);
+      /* expensive greys, no pure white */
+      --bg: #e9e7e3;          /* warm grey paper */
+      --bg2:#dfddd9;          /* deeper panel grey */
+      --ink:#0b0c0d;
+      --muted: rgba(11,12,13,0.62);
+      --hair: rgba(11,12,13,0.18);
+      --hair2: rgba(11,12,13,0.10);
       --max: 1120px;
       --pad: 18px;
-      --gap: 14px;
-      --tile: 14px;
     }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
-      background: var(--bg);
+      background:
+        radial-gradient(1200px 700px at 20% 15%, rgba(255,255,255,0.25), transparent 55%),
+        radial-gradient(900px 600px at 75% 35%, rgba(255,255,255,0.18), transparent 58%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
       color: var(--ink);
       font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       letter-spacing: 0.2px;
     }
 
-    /* ultra subtle grain for print feel */
+    /* subtle paper grain (not “cozy”, just tactile) */
     body::before{
       content:"";
       position:fixed;
       inset:0;
       pointer-events:none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
       mix-blend-mode:multiply;
-      opacity:.4;
+      opacity:.35;
     }
 
     a{ color:inherit; text-decoration:none; }
@@ -52,307 +54,187 @@
     .wrap{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 34px var(--pad) 70px;
+      padding: 26px var(--pad) 70px;
       position:relative;
     }
 
-    /* ARCHIVE HEADER */
+    /* FRONT DOOR */
     header{
       border: 1px solid var(--hair);
-      background: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.14);
       backdrop-filter: blur(6px);
     }
 
-    .topbar{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 14px;
-      padding: 14px 14px 12px;
+    .mast{
+      display:grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 16px;
+      padding: 16px 14px 14px;
       border-bottom: 1px solid var(--hair2);
     }
 
-    .idblock{
-      display:flex;
-      flex-direction:column;
-      gap: 6px;
-      min-width: 240px;
+    .brand{
+      min-width:0;
     }
 
-    .titleRow{
+    .brandTop{
       display:flex;
       align-items:baseline;
-      gap: 10px;
-      flex-wrap: wrap;
+      gap: 12px;
+      flex-wrap:wrap;
     }
 
-    .siteTitle{
-      font-family: "EB Garamond", Georgia, serif;
-      font-weight: 600;
-      font-size: 22px;
-      letter-spacing: 0.2px;
+    .name{
       margin:0;
-    }
-
-    .siteCode{
-      font-size: 11.5px;
-      letter-spacing: 0.16em;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(14,15,16,0.65);
     }
 
-    .descriptor{
-      font-size: 12.5px;
-      line-height: 1.6;
-      color: var(--muted);
-      margin:0;
-      max-width: 620px;
+    .stamp{
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(11,12,13,0.56);
+      white-space: nowrap;
+    }
+
+    .statement{
+      margin: 12px 0 0;
+      font-size: 13px;
+      line-height: 1.85;
+      color: rgba(11,12,13,0.72);
+      max-width: 70ch;
+    }
+
+    .statement strong{
+      font-weight: 500;
+      color: rgba(11,12,13,0.88);
     }
 
     nav{
       display:flex;
-      gap: 16px;
-      align-items:center;
-      flex-wrap: wrap;
+      gap: 18px;
+      align-items:flex-start;
       justify-content:flex-end;
+      flex-wrap:wrap;
       padding-top: 2px;
     }
 
     .tab{
-      padding: 0;
-      border: none;
-      background: none;
-      cursor: pointer;
+      padding:0;
+      border:none;
+      background:none;
+      cursor:pointer;
       font-size: 11.5px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(14,15,16,0.62);
+      color: rgba(11,12,13,0.58);
       position:relative;
     }
-    .tab[aria-selected="true"]{ color: var(--ink); }
+
+    .tab[aria-selected="true"]{
+      color: rgba(11,12,13,0.92);
+    }
+
     .tab[aria-selected="true"]::after{
       content:"";
       position:absolute;
-      left:0; right:0; bottom:-8px;
+      left:0; right:0;
+      bottom:-8px;
       height:1px;
-      background: var(--ink);
-      opacity:.65;
+      background: rgba(11,12,13,0.75);
     }
 
-    /* ARCHIVE META STRIP */
-    .metastrip{
+    /* placard meta strip */
+    .meta{
       display:grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 10px;
       padding: 10px 14px;
-      font-size: 11px;
-      letter-spacing: 0.12em;
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(14,15,16,0.62);
+      color: rgba(11,12,13,0.52);
     }
-
-    .metastrip > div{
-      display:flex;
-      gap: 8px;
-      align-items:baseline;
-      min-width:0;
+    .meta > div{
       white-space: nowrap;
       overflow:hidden;
       text-overflow: ellipsis;
     }
-    .label{ opacity: .75; }
-    .value{ color: rgba(14,15,16,0.88); letter-spacing: 0.1em; }
+    .meta .v{
+      color: rgba(11,12,13,0.78);
+      letter-spacing: 0.14em;
+    }
 
     main{ margin-top: 18px; }
 
-    /* PANELS */
     .panel{ display:none; }
-    .panel.active{ display:block; animation: fade .16s ease; }
+    .panel.active{ display:block; }
 
-    @keyframes fade{
-      from{ opacity:0; transform: translateY(2px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
-
-    /* ARTISTS = INDEX + GALLERY WALL HINT */
-    .artistsHeader{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 14px;
-      padding: 16px 2px 10px;
-    }
-
-    .artistsHeader h2{
-      margin:0;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(14,15,16,0.75);
-      font-weight: 500;
-    }
-
-    .searchWrap{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-
-    .search{
-      border: 1px solid var(--hair2);
-      background: rgba(255,255,255,0.45);
-      padding: 10px 10px;
-      font-size: 12px;
-      width: min(360px, 74vw);
-      outline: none;
-      border-radius: 0;
-      font-family: inherit;
-    }
-    .search:focus{
-      border-color: rgba(14,15,16,0.28);
-      background: rgba(255,255,255,0.70);
-    }
-
-    .count{
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(14,15,16,0.55);
-      white-space: nowrap;
-    }
-
-    /* wall grid */
-    .wall{
+    /* ARTISTS (index list, no “cards”) */
+    .artists{
       border: 1px solid var(--hair);
-      background: rgba(255,255,255,0.34);
-      padding: 14px;
+      background: rgba(255,255,255,0.12);
+      padding: 10px 0;
     }
 
-    .grid{
+    .row{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: var(--gap);
-      align-items:stretch;
-    }
-
-    .tile{
-      grid-column: span 4;
-      border: 1px solid var(--hair2);
-      background: rgba(255,255,255,0.52);
-      padding: 14px 14px 12px;
-      position:relative;
-      min-height: 140px;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      grid-template-columns: 120px 1.2fr 0.8fr;
+      gap: 14px;
+      padding: 12px 14px;
+      border-top: 1px solid var(--hair2);
       cursor:pointer;
     }
+    .row:first-child{ border-top:none; }
 
-    /* gallery hint: slightly “hung” irregularity */
-    .tile:nth-child(3n+1){ transform: translateY(-1px); }
-    .tile:nth-child(3n+2){ transform: translateY(1px); }
-    .tile:nth-child(3n+3){ transform: translateY(0px); }
-
-    .tile:hover{
-      background: rgba(255,255,255,0.72);
-      border-color: rgba(14,15,16,0.22);
-    }
-
-    .tileTop{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 10px;
-    }
-
-    .aName{
-      margin:0;
-      font-family: "EB Garamond", Georgia, serif;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: 0.1px;
-      line-height: 1.1;
-    }
-
-    .aCode{
+    .code{
       font-size: 10.5px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(14,15,16,0.55);
-      white-space: nowrap;
+      color: rgba(11,12,13,0.55);
     }
-
-    .aMeta{
-      margin-top: 10px;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(14,15,16,0.62);
-    }
-
-    .aDesc{
-      margin: 10px 0 0;
-      font-size: 12.8px;
-      line-height: 1.75;
-      color: rgba(14,15,16,0.68);
-      max-width: 52ch;
-    }
-
-    .aLinks{
-      margin-top: 12px;
-      display:flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      color: rgba(14,15,16,0.78);
-    }
-
-    /* drawer */
-    .drawer{
-      display:none;
-      border-top: 1px solid var(--hair2);
-      margin-top: 12px;
-      padding-top: 12px;
+    .rName{
       font-size: 12.5px;
-      line-height: 1.8;
-      color: rgba(14,15,16,0.68);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(11,12,13,0.88);
     }
-    .tile[aria-expanded="true"] .drawer{ display:block; }
-
-    /* ABOUT = ARCHIVE TEXT */
-    .aboutWrap{
-      border: 1px solid var(--hair);
-      background: rgba(255,255,255,0.34);
-      padding: 18px 16px;
+    .rMeta{
+      font-size: 11.5px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(11,12,13,0.58);
+      text-align:right;
     }
 
-    .aboutGrid{
+    /* ABOUT (museum placard blocks) */
+    .about{
       display:grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 14px;
     }
 
     .block{
-      border: 1px solid var(--hair2);
-      background: rgba(255,255,255,0.55);
+      border: 1px solid var(--hair);
+      background: rgba(255,255,255,0.12);
       padding: 14px;
     }
-
     .block h3{
       margin:0 0 10px;
-      font-size: 11px;
+      font-size: 10.5px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(14,15,16,0.78);
+      color: rgba(11,12,13,0.72);
       font-weight: 500;
     }
-
     .block p, .block li{
       margin:0;
       font-size: 12.8px;
-      line-height: 1.85;
-      color: rgba(14,15,16,0.66);
+      line-height: 1.9;
+      color: rgba(11,12,13,0.68);
     }
     .block p + p{ margin-top: 12px; }
     ul{ margin: 10px 0 0; padding-left: 18px; }
@@ -360,33 +242,126 @@
 
     footer{
       margin-top: 16px;
-      padding: 10px 2px 0;
+      padding-top: 10px;
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(11,12,13,0.52);
       display:flex;
       justify-content:space-between;
       gap: 12px;
-      flex-wrap: wrap;
-      font-size: 11.5px;
-      letter-spacing: 0.12em;
+      flex-wrap:wrap;
+    }
+
+    /* FULLSCREEN OVERLAY (artists) */
+    .overlay{
+      position:fixed;
+      inset:0;
+      display:none;
+      background: rgba(15,16,18,0.88); /* stark */
+      color: rgba(255,255,255,0.92);
+      z-index: 50;
+    }
+    .overlay.show{ display:block; }
+
+    .overlayFrame{
+      position:absolute;
+      inset: 18px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.06);
+      display:grid;
+      grid-template-columns: 1fr;
+      padding: 14px;
+    }
+
+    .overlayTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .ovTitle{
+      margin:0;
+      font-size: 12px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(14,15,16,0.55);
+      font-weight: 500;
+      color: rgba(255,255,255,0.92);
     }
 
-    /* responsive */
+    .closeBtn{
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.9);
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 10px 10px;
+      cursor:pointer;
+    }
+
+    .placard{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 220px 1fr;
+      gap: 16px;
+      align-items:start;
+    }
+
+    .placard .left{
+      border-right: 1px solid rgba(255,255,255,0.12);
+      padding-right: 14px;
+    }
+
+    .pName{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .pLine{
+      margin-top: 10px;
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.60);
+      line-height: 1.6;
+    }
+
+    .pText{
+      margin:0;
+      font-size: 13px;
+      line-height: 2.0;
+      color: rgba(255,255,255,0.78);
+      max-width: 78ch;
+    }
+
+    .pLinks{
+      margin-top: 14px;
+      display:flex;
+      gap: 16px;
+      flex-wrap:wrap;
+      font-size: 11.5px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.80);
+    }
+
+    /* Responsive */
     @media (max-width: 980px){
-      .metastrip{ grid-template-columns: 1fr; }
-      .tile{ grid-column: span 6; }
-      .aboutGrid{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 620px){
-      .tile{ grid-column: span 12; }
-      .topbar{ flex-direction: column; }
+      .mast{ grid-template-columns: 1fr; }
       nav{ justify-content:flex-start; }
-      .searchWrap{ justify-content:flex-start; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      .panel.active{ animation:none; }
-      .tile{ transition:none; }
+      .meta{ grid-template-columns: 1fr; }
+      .row{ grid-template-columns: 92px 1fr; }
+      .rMeta{ text-align:left; grid-column: 2; }
+      .about{ grid-template-columns: 1fr; }
+      .placard{ grid-template-columns: 1fr; }
+      .placard .left{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.12); padding-right:0; padding-bottom:12px; }
     }
   </style>
 </head>
@@ -394,14 +369,16 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="topbar">
-        <div class="idblock">
-          <div class="titleRow">
-            <h1 class="siteTitle">Soka Records</h1>
-            <span class="siteCode">INDEX / ARCHIVE</span>
+      <div class="mast">
+        <div class="brand">
+          <div class="brandTop">
+            <h1 class="name">Soka Records</h1>
+            <div class="stamp">FRONT DOOR / ARCHIVE</div>
           </div>
-          <p class="descriptor">
-            Artist studio + label. Selective output. Durable catalog. Quiet execution.
+
+          <p class="statement">
+            <strong>A next generation artist studio, incubator, and record label.</strong><br/>
+            Operates like a studio: selective output, high standards, quiet execution. Catalog-first thinking.
           </p>
         </div>
 
@@ -411,149 +388,133 @@
         </nav>
       </div>
 
-      <div class="metastrip" aria-label="Archive metadata">
-        <div><span class="label">Node</span><span class="value">SOKA</span></div>
-        <div><span class="label">Contact</span><span class="value"><a href="mailto:hello@sokarecords.com">HELLO@SOKARECORDS.COM</a></span></div>
-        <div><span class="label">Location</span><span class="value">LOS ANGELES / GLOBAL</span></div>
+      <div class="meta" aria-label="Metadata">
+        <div>NODE <span class="v">SOKA</span></div>
+        <div>CONTACT <span class="v"><a href="mailto:hello@sokarecords.com">HELLO@SOKARECORDS.COM</a></span></div>
+        <div>LOCATION <span class="v">LOS ANGELES / GLOBAL</span></div>
       </div>
     </header>
 
     <main>
       <!-- ARTISTS -->
       <section class="panel active" role="tabpanel" id="panel-artists" aria-labelledby="tab-artists">
-        <div class="artistsHeader">
-          <h2>Roster</h2>
-          <div class="searchWrap">
-            <input class="search" id="search" type="search" placeholder="Search artists (name, tags, city)..." autocomplete="off" />
-            <div class="count"><span id="shown">0</span>/<span id="total">0</span> shown</div>
+        <div class="artists" aria-label="Artist index">
+          <!-- Replace these rows with real artists -->
+          <div class="row"
+               data-code="A-001"
+               data-name="Artist Name"
+               data-meta="Alt / R&B · Los Angeles"
+               data-text="One sentence, museum-placard tone. Concrete. No hype."
+               data-links='[{"label":"Listen","href":"#"},{"label":"IG","href":"#"}]'>
+            <div class="code">A-001</div>
+            <div class="rName">Artist Name</div>
+            <div class="rMeta">Alt / R&amp;B · Los Angeles</div>
           </div>
-        </div>
 
-        <div class="wall">
-          <div class="grid" id="grid" aria-label="Artist index grid">
-            <!-- Replace these tiles with real artists. Keep data-tags for search. -->
-            <article class="tile" role="button" tabindex="0" aria-expanded="false"
-              data-name="Artist Name"
-              data-tags="alt r&b los angeles"
-              data-city="los angeles">
-              <div class="tileTop">
-                <p class="aName">Artist Name</p>
-                <div class="aCode">A-001</div>
-              </div>
-              <div class="aMeta">Alt / R&amp;B · Los Angeles</div>
-              <p class="aDesc">One sentence. Concrete. Like a catalog caption, not a pitch deck.</p>
-              <div class="aLinks">
-                <a href="#" onclick="event.stopPropagation()">Listen</a>
-                <a href="#" onclick="event.stopPropagation()">IG</a>
-              </div>
-              <div class="drawer">
-                <div><strong>Archive note:</strong> Replace this with 2–3 lines: sonic signature, references, release cadence.</div>
-              </div>
-            </article>
+          <div class="row"
+               data-code="A-002"
+               data-name="Artist Name"
+               data-meta="Indie / Pop · Tokyo"
+               data-text="Short description. Precise references. Let the work carry it."
+               data-links='[{"label":"Listen","href":"#"},{"label":"IG","href":"#"},{"label":"Press","href":"#"}]'>
+            <div class="code">A-002</div>
+            <div class="rName">Artist Name</div>
+            <div class="rMeta">Indie / Pop · Tokyo</div>
+          </div>
 
-            <article class="tile" role="button" tabindex="0" aria-expanded="false"
-              data-name="Artist Name"
-              data-tags="indie pop tokyo"
-              data-city="tokyo">
-              <div class="tileTop">
-                <p class="aName">Artist Name</p>
-                <div class="aCode">A-002</div>
-              </div>
-              <div class="aMeta">Indie / Pop · Tokyo</div>
-              <p class="aDesc">Minimal description. Let the work do the talking.</p>
-              <div class="aLinks">
-                <a href="#" onclick="event.stopPropagation()">Listen</a>
-                <a href="#" onclick="event.stopPropagation()">IG</a>
-              </div>
-              <div class="drawer">
-                <div><strong>Archive note:</strong> Add short credits, collaborators, or a single reference point.</div>
-              </div>
-            </article>
-
-            <article class="tile" role="button" tabindex="0" aria-expanded="false"
-              data-name="Artist Name"
-              data-tags="hip-hop new york"
-              data-city="new york">
-              <div class="tileTop">
-                <p class="aName">Artist Name</p>
-                <div class="aCode">A-003</div>
-              </div>
-              <div class="aMeta">Hip-Hop · New York</div>
-              <p class="aDesc">A precise image or claim. No adjectives unless they earn it.</p>
-              <div class="aLinks">
-                <a href="#" onclick="event.stopPropagation()">Listen</a>
-                <a href="#" onclick="event.stopPropagation()">IG</a>
-              </div>
-              <div class="drawer">
-                <div><strong>Archive note:</strong> Add 1–2 lines about the project focus for the year.</div>
-              </div>
-            </article>
+          <div class="row"
+               data-code="A-003"
+               data-name="Artist Name"
+               data-meta="Hip-Hop · New York"
+               data-text="Minimal. Specific. A single claim you can verify by listening."
+               data-links='[{"label":"Listen","href":"#"},{"label":"IG","href":"#"}]'>
+            <div class="code">A-003</div>
+            <div class="rName">Artist Name</div>
+            <div class="rMeta">Hip-Hop · New York</div>
           </div>
         </div>
       </section>
 
       <!-- ABOUT -->
       <section class="panel" role="tabpanel" id="panel-about" aria-labelledby="tab-about">
-        <div class="aboutWrap">
-          <div class="aboutGrid">
-            <div class="block">
-              <h3>Statement</h3>
-              <p>
-                Soka Records operates like a studio: tight feedback loops, selective releases, high standards.
-                Taste is the filter. Execution is the multiplier.
-              </p>
-              <p>
-                We work early, stay long, and optimize for catalog that still matters years later.
-              </p>
-            </div>
+        <div class="about">
+          <div class="block">
+            <h3>Statement</h3>
+            <p>
+              Soka Records is built for repeatable quality. A small system that makes strong projects inevitable:
+              taste as filter, execution as multiplier, alignment as default.
+            </p>
+            <p>
+              We prefer fewer releases with higher conviction. We optimize for catalog that holds value over time.
+            </p>
+          </div>
 
-            <div class="block">
-              <h3>Contact</h3>
-              <p>
-                Demo submissions: <a href="mailto:demo@sokarecords.com?subject=Demo%20—%20Soka%20Records&body=One%20link%3A%0AOne%20sentence%3A%0A">demo@sokarecords.com</a>
-              </p>
-              <p>
-                General: <a href="mailto:hello@sokarecords.com">hello@sokarecords.com</a>
-              </p>
-              <p>
-                Instagram: <a href="#">(replace link)</a>
-              </p>
-            </div>
+          <div class="block">
+            <h3>Contact</h3>
+            <p>Demo submissions: <a href="mailto:demo@sokarecords.com?subject=Demo%20—%20Soka%20Records&body=One%20link%3A%0AOne%20sentence%3A%0A">demo@sokarecords.com</a></p>
+            <p>General: <a href="mailto:hello@sokarecords.com">hello@sokarecords.com</a></p>
+            <p>Instagram: <a href="#">(replace link)</a></p>
+          </div>
 
-            <div class="block">
-              <h3>Principles</h3>
-              <ul>
-                <li>Fewer bets. Deeper conviction.</li>
-                <li>Speed with standards.</li>
-                <li>Long-term alignment over hype.</li>
-                <li>Minimal surface area.</li>
-              </ul>
-            </div>
+          <div class="block">
+            <h3>Principles</h3>
+            <ul>
+              <li>Fewer bets. Deeper conviction.</li>
+              <li>Standards are the strategy.</li>
+              <li>Alignment over hype.</li>
+              <li>Minimal surface area.</li>
+            </ul>
+          </div>
 
-            <div class="block">
-              <h3>Collaborators</h3>
-              <p>
-                Producers / visual directors / editors / marketers: send portfolio + availability.
-                Reliability is a creative advantage.
-              </p>
-            </div>
+          <div class="block">
+            <h3>Collaborators</h3>
+            <p>
+              Producers / visual directors / editors / marketers: send portfolio + availability.
+              Reliability is a creative advantage.
+            </p>
           </div>
         </div>
       </section>
 
       <footer>
-        <div>© <span id="year"></span> Soka Records</div>
+        <div>© <span id="year"></span> SOKA RECORDS</div>
         <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="#">Instagram</a>
-          <a href="#">YouTube</a>
-          <a href="mailto:hello@sokarecords.com">Email</a>
+          <a href="#">INSTAGRAM</a>
+          <a href="#">YOUTUBE</a>
+          <a href="mailto:hello@sokarecords.com">EMAIL</a>
         </div>
       </footer>
     </main>
   </div>
 
+  <!-- Fullscreen overlay -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="overlayFrame" role="dialog" aria-modal="true" aria-label="Artist details">
+      <div class="overlayTop">
+        <div>
+          <div class="ovTitle" id="ovCode">A-000</div>
+          <div class="ovTitle" style="opacity:.65; margin-top:6px;" id="ovMeta">—</div>
+        </div>
+        <button class="closeBtn" id="closeBtn">Close</button>
+      </div>
+
+      <div class="placard">
+        <div class="left">
+          <p class="pName" id="ovName">Artist</p>
+          <div class="pLine">CATALOG ENTRY</div>
+          <div class="pLine">SOKA / RECORDS</div>
+          <div class="pLine" id="ovYearLine">YEAR <span style="opacity:.75;">—</span></div>
+        </div>
+        <div class="right">
+          <p class="pText" id="ovText">—</p>
+          <div class="pLinks" id="ovLinks"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Tabs
+    // Tabs (no motion)
     const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
     const panels = {
       artists: document.getElementById('panel-artists'),
@@ -570,47 +531,79 @@
     const hash = (location.hash || '').replace('#','').trim();
     if (hash && panels[hash]) setTab(hash);
 
-    // Artist tiles: expand/collapse
-    function toggleTile(tile){
-      const expanded = tile.getAttribute('aria-expanded') === 'true';
-      tile.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    // Overlay (artists)
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+
+    const ovCode = document.getElementById('ovCode');
+    const ovMeta = document.getElementById('ovMeta');
+    const ovName = document.getElementById('ovName');
+    const ovText = document.getElementById('ovText');
+    const ovLinks = document.getElementById('ovLinks');
+    const ovYearLine = document.getElementById('ovYearLine');
+
+    let lastFocus = null;
+
+    function openOverlay(row){
+      lastFocus = document.activeElement;
+
+      const code = row.dataset.code || 'A-000';
+      const name = row.dataset.name || 'Artist';
+      const meta = row.dataset.meta || '';
+      const text = row.dataset.text || '';
+      const linksRaw = row.dataset.links || '[]';
+
+      ovCode.textContent = code;
+      ovMeta.textContent = meta;
+      ovName.textContent = name;
+      ovText.textContent = text;
+
+      const yr = new Date().getFullYear();
+      ovYearLine.innerHTML = 'YEAR <span style="opacity:.75;">' + yr + '</span>';
+
+      // links
+      ovLinks.innerHTML = '';
+      let links = [];
+      try { links = JSON.parse(linksRaw); } catch(e) { links = []; }
+      links.forEach(l => {
+        const a = document.createElement('a');
+        a.href = l.href || '#';
+        a.textContent = (l.label || 'Link').toUpperCase();
+        a.addEventListener('click', (ev) => ev.stopPropagation());
+        ovLinks.appendChild(a);
+      });
+
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+      closeBtn.focus();
+      document.body.style.overflow = 'hidden';
     }
 
-    document.querySelectorAll('.tile').forEach(tile => {
-      tile.addEventListener('click', () => toggleTile(tile));
-      tile.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTile(tile); }
-      });
+    function closeOverlay(){
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    closeBtn.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeOverlay();
     });
 
-    // Search
-    const search = document.getElementById('search');
-    const tiles = Array.from(document.querySelectorAll('.tile'));
-    const shownEl = document.getElementById('shown');
-    const totalEl = document.getElementById('total');
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('show')) closeOverlay();
+    });
 
-    totalEl.textContent = String(tiles.length);
-
-    function applyFilter(){
-      const q = (search.value || '').trim().toLowerCase();
-      let shown = 0;
-      tiles.forEach(t => {
-        const hay = [
-          t.dataset.name || '',
-          t.dataset.tags || '',
-          t.dataset.city || '',
-          t.querySelector('.aMeta')?.textContent || ''
-        ].join(' ').toLowerCase();
-
-        const ok = !q || hay.includes(q);
-        t.style.display = ok ? '' : 'none';
-        if (ok) shown++;
+    // bind rows
+    document.querySelectorAll('.row').forEach(row => {
+      row.setAttribute('tabindex', '0');
+      row.setAttribute('role', 'button');
+      row.addEventListener('click', () => openOverlay(row));
+      row.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openOverlay(row); }
       });
-      shownEl.textContent = String(shown);
-    }
-
-    search.addEventListener('input', applyFilter);
-    applyFilter();
+    });
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
