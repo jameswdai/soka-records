@@ -128,40 +128,40 @@ main{
   flex-direction:column;
 }
 
-/* HOME / FRONT DOOR */
+/* DOCTRINE BODY */
 
-.home{
+.doctrineWrap{
   flex:1;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:24px 0 10px;
+  padding:48px 0 40px;
 }
 
-.centerFrame{
-  width:min(960px,96vw);
-  border:1px solid rgba(255,255,255,.16);
-  background:rgba(255,255,255,.02);
-  padding:16px;
-}
-
-.centerImage{
+.doctrine{
   width:100%;
-  display:block;
-  border:1px solid rgba(255,255,255,.1);
-  filter:invert(1) grayscale(1) contrast(1.05);
+  max-width:640px;
+  border:1px solid var(--hair);
+  background:var(--panel);
+  padding:28px 26px;
 }
 
-.homeNote{
-  margin-top:12px;
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  font-size:10px;
-  letter-spacing:.22em;
+.doctrine p{
+  margin:0;
+  font-size:12.6px;
+  letter-spacing:.18em;
   text-transform:uppercase;
-  color:rgba(255,255,255,.44);
+  line-height:2.1;
+}
+
+.doctrine p + p{
+  margin-top:12px;
+}
+
+.doctrine .spacer{
+  margin:18px 0 16px;
+  border-top:1px solid var(--hair2);
+  height:1px;
 }
 
 /* FOOTER */
@@ -183,6 +183,7 @@ footer{
 
 @media(max-width:900px){
   .meta{grid-template-columns:1fr}
+  .doctrine{padding:22px 18px}
 }
 </style>
 </head>
@@ -215,13 +216,21 @@ footer{
 
 <main>
 
-<section class="home">
-  <div class="centerFrame">
-    <img src="center.png" class="centerImage" alt="Soka Records"/>
-    <div class="homeNote">
-      <div>ENTRY POINT</div>
-      <div>WE BUILD ARTISTS</div>
-    </div>
+<section class="doctrineWrap">
+  <div class="doctrine">
+
+    <p>CAREER-BUILDING STUDIO.</p>
+
+    <p>BREAKOUT SYSTEMS.</p>
+
+    <p>LONG-HORIZON ARTIST VALUE.</p>
+
+    <p>FEWER RELEASES. HIGHER CONVICTION.</p>
+
+    <div class="spacer"></div>
+
+    <p>WHAT HAPPENED TO ARTIST DEVELOPMENT?</p>
+
   </div>
 </section>
 
