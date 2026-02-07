@@ -78,7 +78,7 @@ header{
 }
 
 .brand{
-  max-width:720px;
+  max-width:760px;
   display:flex;
   flex-direction:column;
   gap:10px;
@@ -102,38 +102,6 @@ header{
 .statement strong{
   color:var(--ink);
   font-weight:500;
-}
-
-nav{
-  display:flex;
-  gap:18px;
-  align-items:flex-start;
-  padding-top:2px;
-}
-
-.tab{
-  border:none;
-  background:none;
-  color:rgba(255,255,255,.55);
-  font-size:11px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  cursor:pointer;
-  position:relative;
-  padding:0;
-}
-
-.tab[aria-selected="true"]{
-  color:var(--ink);
-}
-
-.tab[aria-selected="true"]:after{
-  content:"";
-  position:absolute;
-  left:0;right:0;
-  bottom:-8px;
-  height:1px;
-  background:rgba(255,255,255,.75);
 }
 
 .meta{
@@ -160,10 +128,7 @@ main{
   flex-direction:column;
 }
 
-.panel{display:none}
-.panel.active{display:block}
-
-/* HOME */
+/* HOME / FRONT DOOR */
 
 .home{
   flex:1;
@@ -199,169 +164,6 @@ main{
   color:rgba(255,255,255,.44);
 }
 
-/* ARTISTS LIST */
-
-.artists{
-  border:1px solid var(--hair);
-  background:var(--panel);
-  padding:10px 0;
-}
-
-.row{
-  display:grid;
-  grid-template-columns:110px 1.2fr 0.8fr;
-  gap:14px;
-  padding:12px 14px;
-  border-top:1px solid var(--hair2);
-  cursor:pointer;
-}
-
-.row:first-child{border-top:none}
-
-.code{
-  font-size:10px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.46);
-}
-
-.rName{
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-}
-
-.rMeta{
-  font-size:11px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.52);
-  text-align:right;
-}
-
-/* ABOUT */
-
-.about{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:14px;
-}
-
-.block{
-  border:1px solid var(--hair);
-  background:var(--panel);
-  padding:14px;
-}
-
-.block h3{
-  margin:0 0 10px;
-  font-size:10px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  font-weight:500;
-}
-
-.block p,.block li{
-  margin:0;
-  font-size:12.6px;
-  line-height:2;
-  color:rgba(255,255,255,.64);
-}
-
-.block p+p{margin-top:12px}
-
-ul{margin:10px 0 0;padding-left:18px}
-
-/* OVERLAY */
-
-.overlay{
-  position:fixed;
-  inset:0;
-  display:none;
-  background:rgba(0,0,0,.95);
-  z-index:40;
-}
-
-.overlay.show{display:block}
-
-.overlayFrame{
-  position:absolute;
-  inset:18px;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(255,255,255,.03);
-  padding:14px;
-}
-
-.overlayTop{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  border-bottom:1px solid rgba(255,255,255,.1);
-  padding-bottom:12px;
-}
-
-.ovTitle{
-  font-size:10px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-}
-
-.closeBtn{
-  border:1px solid rgba(255,255,255,.14);
-  background:none;
-  color:var(--ink);
-  font-size:10px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  padding:8px 10px;
-  cursor:pointer;
-}
-
-.placard{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns:220px 1fr;
-  gap:16px;
-}
-
-.placard .left{
-  border-right:1px solid rgba(255,255,255,.1);
-  padding-right:14px;
-}
-
-.pName{
-  margin:0;
-  font-size:13px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
-
-.pLine{
-  margin-top:10px;
-  font-size:10px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.54);
-}
-
-.pText{
-  margin:0;
-  font-size:12.8px;
-  line-height:2.05;
-  color:rgba(255,255,255,.72);
-  max-width:80ch;
-}
-
-.pLinks{
-  margin-top:14px;
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-  font-size:10.8px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
-
 /* FOOTER */
 
 footer{
@@ -381,11 +183,6 @@ footer{
 
 @media(max-width:900px){
   .meta{grid-template-columns:1fr}
-  .row{grid-template-columns:90px 1fr}
-  .rMeta{text-align:left;grid-column:2}
-  .about{grid-template-columns:1fr}
-  .placard{grid-template-columns:1fr}
-  .placard .left{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding-right:0;padding-bottom:12px}
 }
 </style>
 </head>
@@ -402,157 +199,45 @@ footer{
 
       <p class="statement">
         <strong>A next generation artist studio, talent incubator, and record label.</strong><br/>
-        Our mission is to successfully introduce great new artists to the world.
+        We don't just sign artists. We build them.
       </p>
     </div>
-
-    <nav>
-      <button class="tab" role="tab" aria-selected="true" data-tab="home">Home</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="artists">Artists</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="about">About</button>
-    </nav>
   </div>
 
   <div class="meta">
     <div>NODE <span class="v">SOKA</span></div>
-    <div>CONTACT <span class="v"><a href="mailto:hello@sokarecords.com">HELLO@SOKARECORDS.COM</a></span></div>
+    <div>CONTACT <span class="v">
+      <a href="mailto:admin@sokarecords.com">ADMIN@SOKARECORDS.COM</a>
+    </span></div>
     <div>LOCATION <span class="v">LOS ANGELES / GLOBAL</span></div>
   </div>
 </header>
 
 <main>
 
-<section class="panel active" id="panel-home">
-  <div class="home">
-    <div class="centerFrame">
-      <img src="center.png" class="centerImage" alt="Soka Records front door"/>
-      <div class="homeNote">
-        <div>ENTRY POINT</div>
-        <div>SELECTIVE OUTPUT / HIGH STANDARDS</div>
-      </div>
+<section class="home">
+  <div class="centerFrame">
+    <img src="center.png" class="centerImage" alt="Soka Records"/>
+    <div class="homeNote">
+      <div>ENTRY POINT</div>
+      <div>WE BUILD ARTISTS</div>
     </div>
-  </div>
-</section>
-
-<section class="panel" id="panel-artists">
-  <div class="artists">
-
-    <div class="row"
-      data-code="A-001"
-      data-name="Artist Name"
-      data-meta="Alt / R&B · Los Angeles"
-      data-text="One sentence, museum-placard tone. Concrete. No hype."
-      data-links='[{"label":"Listen","href":"#"},{"label":"IG","href":"#"}]'>
-      <div class="code">A-001</div>
-      <div class="rName">Artist Name</div>
-      <div class="rMeta">Alt / R&amp;B · Los Angeles</div>
-    </div>
-
-    <div class="row"
-      data-code="A-002"
-      data-name="Artist Name"
-      data-meta="Indie / Pop · Tokyo"
-      data-text="Short description. Precise references. Let the work carry it."
-      data-links='[{"label":"Listen","href":"#"},{"label":"IG","href":"#"},{"label":"Press","href":"#"}]'>
-      <div class="code">A-002</div>
-      <div class="rName">Artist Name</div>
-      <div class="rMeta">Indie / Pop · Tokyo</div>
-    </div>
-
-  </div>
-</section>
-
-<section class="panel" id="panel-about">
-  <div class="about">
-
-    <div class="block">
-      <h3>Statement</h3>
-      <p>
-        Soka Records is built for repeatable quality. Taste as filter, execution as multiplier.
-        We prefer fewer releases with higher conviction and optimize for durable catalog value.
-      </p>
-    </div>
-
-    <div class="block">
-      <h3>Contact</h3>
-      <p>Demo submissions: <a href="mailto:demo@sokarecords.com">demo@sokarecords.com</a></p>
-      <p>General: <a href="mailto:hello@sokarecords.com">hello@sokarecords.com</a></p>
-    </div>
-
-    <div class="block">
-      <h3>Principles</h3>
-      <ul>
-        <li>Fewer bets. Deeper conviction.</li>
-        <li>Standards are the strategy.</li>
-        <li>Alignment over hype.</li>
-        <li>Minimal surface area.</li>
-      </ul>
-    </div>
-
-    <div class="block">
-      <h3>Collaborators</h3>
-      <p>
-        Producers / visual directors / editors / marketers:
-        send portfolio + availability.
-      </p>
-    </div>
-
   </div>
 </section>
 
 <footer>
   <div>© <span id="year"></span> Soka Records</div>
   <div>
-    <a href="#">INSTAGRAM</a> ·
-    <a href="#">YOUTUBE</a> ·
-    <a href="mailto:hello@sokarecords.com">EMAIL</a>
+    <a href="mailto:admin@sokarecords.com">ADMIN@SOKARECORDS.COM</a>
   </div>
 </footer>
 
 </main>
 </div>
 
-<div class="overlay" id="overlay">
-  <div class="overlayFrame">
-    <div class="overlayTop">
-      <div>
-        <div class="ovTitle" id="ovCode"></div>
-        <div class="ovTitle" id="ovMeta" style="opacity:.6;margin-top:6px"></div>
-      </div>
-      <button class="closeBtn" id="closeBtn">Close</button>
-    </div>
-
-    <div class="placard">
-      <div class="left">
-        <p class="pName" id="ovName"></p>
-        <div class="pLine">Catalog entry</div>
-        <div class="pLine">Soka Records</div>
-      </div>
-      <div>
-        <p class="pText" id="ovText"></p>
-        <div class="pLinks" id="ovLinks"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-const tabs=[...document.querySelectorAll(".tab")];
-const panels={
-  home:document.getElementById("panel-home"),
-  artists:document.getElementById("panel-artists"),
-  about:document.getElementById("panel-about")
-};
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
-tabs.forEach(t=>{
-  t.onclick=()=>{
-    tabs.forEach(b=>b.setAttribute("aria-selected","false"));
-    t.setAttribute("aria-selected","true");
-    Object.values(panels).forEach(p=>p.classList.remove("active"));
-    panels[t.dataset.tab].classList.add("active");
-  }
-});
-
-const overlay=document.getElementById("overlay");
-const closeBtn=document.getElementById("closeBtn");
-const ovCode=document
+</body>
+</html>
